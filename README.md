@@ -29,39 +29,8 @@ Then launch:
 jupyter notebook notebooks/workshop.ipynb
 ```
 
-## Repo layout
-
-```
-hybrid-rag-workshop/
-├── README.md
-├── requirements.txt
-├── preflight.py              # run before the session
-├── data/
-│   └── docs.json             # 20-doc mini knowledge base (paired by design)
-├── notebooks/
-│   ├── workshop.ipynb        # attendee version (fill-in-the-blank TODOs)
-│   └── solution.ipynb        # completed reference
-├── src/
-│   └── retrieval.py          # standalone BM25 / Dense / RRF module
-└── slides/
-    └── outline.md            # slide-by-slide + speaker script
-```
-
 ## ⚠️ One thing to know about the dense step
 
 The dense retrieval step uses the real `all-MiniLM-L6-v2` embedding model. **The "vector search rescues the synonym query" moment only lands with the real model.**
 
 If the model can't download (no internet), the notebook auto-falls-back to a tiny hashing embedding so nothing crashes — but that fallback is *not* semantic, so dense results will look weak. **Run `preflight.py` on good wifi beforehand** so everyone has the real model cached. This is the one dependency that decides whether the key teaching moment works.
-
-## Timing (60 min)
-
-| Time | Section |
-|------|---------|
-| 0–10 | The hook: one query, two failures |
-| 10–20 | Setup + BM25 from scratch |
-| 20–35 | BM25 wins (codes) and loses (synonyms) |
-| 35–50 | Dense embeddings — meaning over words |
-| 50–58 | RRF fusion — the payoff |
-| 58–60 | Recap + optional LLM-on-top |
-
-See `slides/outline.md` for the full speaker script.
