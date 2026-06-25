@@ -5,10 +5,17 @@ Run this BEFORE the workshop to catch problems early:
 It checks your Python, installs are working, and pre-downloads the embedding
 model so the session doesn't stall on wifi. Green checkmarks = you're ready.
 """
+
 import sys
 
-def ok(m): print(f"  [OK]   {m}")
-def bad(m): print(f"  [FAIL] {m}")
+
+def ok(m):
+    print(f"  [OK]   {m}")
+
+
+def bad(m):
+    print(f"  [FAIL] {m}")
+
 
 print("Hybrid Search Workshop — preflight\n")
 
@@ -27,6 +34,7 @@ for mod in ["numpy", "rank_bm25", "sentence_transformers"]:
 # 3. Pre-download the embedding model (the usual wifi bottleneck)
 try:
     from sentence_transformers import SentenceTransformer
+
     print("\n  downloading all-MiniLM-L6-v2 (~80MB, one time)...")
     m = SentenceTransformer("all-MiniLM-L6-v2")
     _ = m.encode(["hello world"])
@@ -38,6 +46,7 @@ except Exception as e:
 
 # 4. Data present
 import os, json
+
 p = os.path.join(os.path.dirname(__file__), "data", "docs.json")
 try:
     n = len(json.load(open(p)))

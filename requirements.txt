@@ -6,7 +6,7 @@ rank-bm25==0.2.2            # reference BM25 (we also show a from-scratch versio
 sentence-transformers==3.3.1   # downloads all-MiniLM-L6-v2 (~80MB) on first run
 
 # Optional — only for the final LLM generation cell (Groq free tier)
-groq==0.13.0
+groq
 
 # Notebook
 jupyter==1.1.1
